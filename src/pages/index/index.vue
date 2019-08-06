@@ -1,12 +1,13 @@
 <template>
-  <div class="homeWrap"></div>
+  <div class="indexWrap"></div>
 </template>
+
 <script>
 export default {
   data() {
     return {};
   },
-
+  //传入组件
   components: {},
 
   methods: {},
@@ -18,9 +19,4 @@ export default {
 </script>
 
 <style scoped>
-.homeWrap {
-  height: 100%;
-  width: 100%;
-  background: red;
-}
 </style>

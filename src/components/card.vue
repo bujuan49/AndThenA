@@ -1,23 +1,14 @@
 <template>
   <div>
-
+    <p class="card">
+      {{text}}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  components: {
-  
-  },
-  data () {
-    return {
-
-    }
-  },
-
-  created () {
-
-  }
+  props: ['text']
 }
 </script>
 
