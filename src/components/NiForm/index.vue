@@ -1,6 +1,7 @@
 <template>
   <div class="serveBox">
     <div class="boxTop">
+      <p class="iconfont icon-zhifeiji"></p>
       <p>一面而就</p>
       <p>·</p>
     </div>
