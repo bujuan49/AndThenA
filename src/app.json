@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main"
+    "pages/logs/main",
+    "pages/interviewList/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

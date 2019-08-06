@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from './node_modules/vue'
 import App from './index'
 // add this to handle exception
 Vue.config.errorHandler = function (err) {

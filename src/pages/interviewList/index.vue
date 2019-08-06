@@ -1,8 +1,5 @@
 <template>
-  <div class="indexWrap">
-        
-    <p>hahah</p>
-  </div>
+  <div class="interviewListWrap"></div>
 </template>
 
 <script>
