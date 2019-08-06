@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/addInter/main",
     "pages/serve/main",
     "pages/interviewList/main",
     "pages/index/main",
