@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/design/main",
+    "pages/personal/main",
     "pages/addInter/main",
     "pages/serve/main",
     "pages/interviewList/main",
