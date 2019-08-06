@@ -10,8 +10,27 @@
         <p>7月4日 8:28</p>
       </div>
       <div class="boxFont">
-        <p>公司名称</p>
-        <p>老马识途</p>
+        <div>
+          <p>公司名称</p>
+          <p>老马识途</p>
+        </div>
+        <div>
+          <p>联系人</p>
+          <p>12345465655</p>
+        </div>
+
+        <div>
+          <p>公司名称</p>
+          <p>老马识途</p>
+        </div>
+        <div>
+          <p>公司名称</p>
+          <p>老马识途</p>
+        </div>
+        <div>
+          <p>公司名称</p>
+          <p>老马识途</p>
+        </div>
       </div>
     </div>
     <div class="boxBottom">
@@ -62,12 +81,13 @@ export default {
   border-top: 1px solid #ccc;
 }
 .boxBottom {
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 62rpx;
+  line-height: 62rpx;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   border-top: 1px solid #ccc;
+  font-size: 32rpx;
   p:nth-child(1) {
     margin-left: 25rpx;
   }
@@ -90,7 +110,22 @@ export default {
   }
 }
 .boxFont {
-  margin: 0 auto;
-  width: 93%;
+  margin-top: 30rpx;
+  height: 240rpx;
+  div {
+    margin-top: 20rpx;
+    margin: 0 auto;
+    width: 93%;
+    display: flex;
+    font-size: 30rpx;
+    padding: 3rpx;
+    p:nth-child(1) {
+      width: 130rpx;
+      color: rgb(177, 177, 177);
+    }
+    p:nth-child(2) {
+      margin-left: 20rpx;
+    }
+  }
 }
 </style>
