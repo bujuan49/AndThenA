@@ -1,6 +1,8 @@
 <template>
   <div class="homewrap">
-    <div class="content"></div>
+    <div class="content">
+      <map name=""></map>
+    </div>
     <div class="footer" @click="addinterview()">添加面试</div>
   </div>
 </template>
