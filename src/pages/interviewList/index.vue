@@ -7,18 +7,21 @@
       <li>全部</li>
     </ul>
     <div class="interviewMain">
-      <div class="interviewMainBox"></div>
+      <ListBox />
     </div>
   </div>
 </template>
 
 <script>
+import ListBox from "@/components/listBox";
 export default {
   data() {
     return {};
   },
   //传入组件
-  components: {},
+  components: {
+    ListBox
+  },
 
   methods: {},
 
@@ -50,11 +53,7 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  .interviewMainBox {
-    height:260rpx;
-    background: #fff;
-    margin-top: 16rpx;
-  }
+  overflow-y: auto;
 }
 .active {
   color: rgb(39, 133, 195);
