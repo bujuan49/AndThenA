@@ -9,12 +9,16 @@
       >{{item.text}}</li>
     </ul>
     <div class="interviewMain">
-      <ListBox />
+      {{
+        listAll
+      }}
+      <ListBox :listAll="listAll" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 import ListBox from "@/components/listBox";
 export default {
   data() {
@@ -32,19 +36,25 @@ export default {
   components: {
     ListBox
   },
+  computed: {
+    ...mapState({
+      listAll: state => state.interviewList.listAll
+    })
+  },
 
   methods: {
+    ...mapActions({
+      getState: "interviewList/getState"
+    }),
     check: function(item) {
       this.ind = item.id;
       if (item.text === "全部") {
-        console.log(1);
+        this.getState();
       }
     }
   },
 
-  created() {
-    // let app = getApp()
-  }
+  created() {}
 };
 </script>
 

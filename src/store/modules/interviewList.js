@@ -7,12 +7,19 @@ const state = {
 
 // 模块内的同步改变
 const mutations = {
-
+  setState (state, data) {
+    state.listAll = data
+    // console.log('...state', state, data)
+  }
 }
 
 // 模块内的异步改变
 const actions = {
-
+  async getState (context, payload) {
+    let data = await sign(payload)
+    console.log(data.data)
+    context.commit('setState', data.data)
+  }
 }
 
 export default {

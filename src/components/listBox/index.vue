@@ -1,25 +1,30 @@
 <template>
-  <div class="interviewMainBox">
-    <div class="boxListOne">
-      <p>百度</p>
-      <p class="okCall end">已打卡</p>
-    </div>
-    <div class="boxListTwo">
-      <p>北京市海淀区上地十街10号</p>
-      <p></p>
-    </div>
-    <div class="boxListThree">
-      <p>
-        面试时间:2019-07-04
-        <span>21:00</span>
-      </p>
-      <p class="okCall no" @click="to">未提醒</p>
+  <div>
+    <div class="interviewMainBox" v-for="item in listAll" :key="item.id">
+      <div class="boxListOne">
+        <p>{{listAll}}</p>
+        <p class="okCall end">已打卡</p>
+      </div>
+      <div class="boxListTwo">
+        <p>北京市海淀区上地十街10号</p>
+        <p></p>
+      </div>
+      <div class="boxListThree">
+        <p>
+          面试时间:2019-07-04
+          <span>21:00</span>
+        </p>
+        <p class="okCall no" @click="to">未提醒</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    listAll: Object
+  },
   data() {
     return {};
   },
@@ -35,7 +40,7 @@ export default {
   },
 
   created() {
-    // let app = getApp()
+    console.log();
   }
 };
 </script>
