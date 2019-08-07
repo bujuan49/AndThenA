@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "pages": [
     "pages/interviewList/main",
@@ -11,3 +12,25 @@
     "navigationBarTextStyle": "black"
   }
 }
+=======
+{
+  "pages": [
+    "pages/index/main",
+    "pages/interview/main",
+    "pages/selectaddress/main",
+    "pages/logs/main",
+    "pages/counter/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "一面而就",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  }
+}
+>>>>>>> whp

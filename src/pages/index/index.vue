@@ -1,29 +1,74 @@
 <template>
-  <div class="indexWrap">
-        
-    <p>hahah</p>
+  <div class="homewrap">
+    <div class="content">
+      <map id="map" name="" show-location :longitude="longitude" :latitude="latitude" :markers="markers"></map>
+      <cover-view class="location" @click="location">
+        <button>定位</button>
+      </cover-view>
+    </div>
+    <navigator url="/pages/interview/main" class="footer">添加面试</navigator>
   </div>
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex"
 export default {
-  data() {
-    return {};
+  data () {
+    return {
+     markers:[]
+    }
   },
-  //传入组件
-  components: {},
 
-  methods: {},
+   computed: {
+    ...mapState({
+      longitude: state=>state.home.longitude,
+      latitude: state=>state.home.latitude
+    })
+  },
+  methods: {
+    ...mapActions({
+      location: 'home/getLocation'
+    })
+  },
 
-  created() {
+  created () {
     // let app = getApp()
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
-.indexWrap {
+*{
+  margin:0;
+  padding: 0;
+}
+.homewrap{
   width: 100%;
   height: 100%;
+  background: pink;
+  display: flex;
+  flex-direction: column;
+  .content{
+    width: 100%;
+    flex:1;
+    map{
+      width: 100%;
+      height: 100%;
+    }
+    .location{
+      position: fixed;
+      top:50rpx;
+      left:20rpx;
+    }
+  }
+  .footer{
+    width: 100%;
+    height: 100rpx;
+    background:#001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#fff;
+  }
 }
 </style>
