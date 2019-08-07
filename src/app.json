@@ -1,36 +1,21 @@
-<<<<<<< HEAD
 {
   "pages": [
+    "pages/index/main",
     "pages/interviewList/main",
-    "pages/index/main",
-    "pages/logs/main"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  }
-}
-=======
-{
-  "pages": [
-    "pages/index/main",
+    "pages/clock/main",
+    "pages/serve/main",
+    "pages/design/main",
+    "pages/personal/main",
+    "pages/addInter/main",
     "pages/interview/main",
+    "pages/counter/main",
     "pages/selectaddress/main",
-    "pages/logs/main",
-    "pages/counter/main"
+    "pages/logs/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "一面而就",
     "navigationBarTextStyle": "black"
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
-    }
   }
 }
->>>>>>> whp
