@@ -9,16 +9,14 @@ export default {
     return {};
   },
   //计算属性
-  computed: {
-    
-  },
+  computed: {},
   //传入组件
   components: {},
 
   methods: {},
 
   created() {
-    // let app = getApp()
+    console.log(this.$store);
   }
 };
 </script>

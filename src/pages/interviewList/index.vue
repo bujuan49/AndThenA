@@ -1,10 +1,7 @@
 <template>
   <div class="interviewListWrap">
     <ul class="interviewListHeader">
-      <li class="active">未开始</li>
-      <li>已打卡</li>
-      <li>以放弃</li>
-      <li>全部</li>
+      <li v-for="item in list" :key="item.id" :class="ind===item.id?'active':' '">{{item.text}}</li>
     </ul>
     <div class="interviewMain">
       <ListBox />
@@ -17,7 +14,13 @@ import ListBox from "@/components/listBox";
 export default {
   data() {
     return {
-      // list:
+      ind: 0,
+      list: [
+        { text: "未开始", id: 0 },
+        { text: "已开始", id: 1 },
+        { text: "已放弃", id: 2 },
+        { text: "全部", id: 3 }
+      ]
     };
   },
   //传入组件
