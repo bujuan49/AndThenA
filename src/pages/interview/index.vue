@@ -20,7 +20,7 @@
       </div>
        <div class="inp_box">
         <span>面试地址</span>
-        <input type="text" placeholder="请选择面试地址" @click="()=>this.$router.push({path:"/"})">
+        <navigator url="/pages/selectaddress/main"><input type="text" placeholder="请选择面试地址"></navigator>
       </div>
       <div class="title">备注信息</div>
       <div class="text_box">
@@ -36,7 +36,7 @@ export default {
    data () {
     return {
       index: 0,
-      array: ['A', 'B', 'C']
+      array: []
     }
   },
 

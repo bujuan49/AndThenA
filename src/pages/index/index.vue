@@ -1,43 +1,34 @@
 <template>
   <div class="homewrap">
     <div class="content">
-      <map name=""></map>
+      <map id="map" name="" show-location :longitude="longitude" :latitude="latitude" :markers="markers"></map>
+      <cover-view class="location" @click="location">
+        <button>定位</button>
+      </cover-view>
     </div>
-    <div class="footer" @click="addinterview()">添加面试</div>
+    <navigator url="/pages/interview/main" class="footer">添加面试</navigator>
   </div>
 </template>
 
 <script>
-import card from '@/components/card'
-
+import {mapState,mapActions} from "vuex"
 export default {
   data () {
     return {
-      motto: 'Hello miniprograme',
-      userInfo: {
-        nickName: 'mpvue',
-        avatarUrl: ''
-      }
+     markers:[]
     }
   },
 
-  components: {
-    card
+   computed: {
+    ...mapState({
+      longitude: state=>state.home.longitude,
+      latitude: state=>state.home.latitude
+    })
   },
-
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
-      } else {
-        mpvue.navigateTo({ url })
-      }
-    },
-    clickHandle (ev) {
-      console.log('clickHandle:', ev)
-      // throw {message: 'custom test'}
-    }
+    ...mapActions({
+      location: 'home/getLocation'
+    })
   },
 
   created () {
@@ -47,6 +38,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+*{
+  margin:0;
+  padding: 0;
+}
 .homewrap{
   width: 100%;
   height: 100%;
@@ -56,6 +51,15 @@ export default {
   .content{
     width: 100%;
     flex:1;
+    map{
+      width: 100%;
+      height: 100%;
+    }
+    .location{
+      position: fixed;
+      top:50rpx;
+      left:20rpx;
+    }
   }
   .footer{
     width: 100%;
