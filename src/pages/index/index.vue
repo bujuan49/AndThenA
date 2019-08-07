@@ -3,8 +3,9 @@
     <div class="content">
       <map id="map" name="" show-location :longitude="longitude" :latitude="latitude" :markers="markers"></map>
       <cover-view class="location" @click="location">
-        <button>定位</button>
+        <button><img src="https://i.52112.com/icon/jpg/256/20160808/2722/142190.jpg" alt=""></button>
       </cover-view>
+      <div><img src="https://i.52112.com/icon/jpg/256/20160616/2231/122256.jpg" alt=""></div>
     </div>
     <navigator url="/pages/interview/main" class="footer">添加面试</navigator>
   </div>
@@ -59,6 +60,10 @@ export default {
       position: fixed;
       top:50rpx;
       left:20rpx;
+     img{
+        width: 50rpx;
+        height: 40rpx;
+      }
     }
   }
   .footer{

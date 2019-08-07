@@ -12,15 +12,20 @@
       </div>
        <div class="inp_box">
         <span>面试时间</span>
-        <picker mode="date" :value="date" start="2015-09-01" end="2019-10-01" @change="bindDateChange">
+        <picker mode="date" :value="date" start="2015-09-01" end="2019-10-01" @change="bindPickerChange">
             <view class="picker">
-              2019-8-6 {{date}}
+             {{date}}
+            </view>
+        </picker>
+        <picker mode="time" :value="time" start="00:00" end="24:00" @change="bindChangeTime">
+            <view class="picker">
+              {{time}}
             </view>
         </picker>
       </div>
        <div class="inp_box">
         <span>面试地址</span>
-        <navigator url="/pages/selectaddress/main"><input type="text" placeholder="请选择面试地址"></navigator>
+        <navigator url="/pages/addInter/main"><input type="text" placeholder="请选择面试地址"></navigator>
       </div>
       <div class="title">备注信息</div>
       <div class="text_box">
@@ -35,8 +40,8 @@
 export default {
    data () {
     return {
-      index: 0,
-      array: []
+     date:"2019-08-07",
+     time:"08:00"
     }
   },
 
@@ -44,9 +49,14 @@ export default {
    
   },
 
-   methods: {
+  methods: {
     bindPickerChange (e) {
-      console.log(e)
+        //console.log('picker发送选择改变，携带值为', e.mp.detail.value)
+        this.date= e.mp.detail.value;
+    },
+    bindChangeTime(e){
+        //console.log('picker发送选择改变，携带值为', e.mp.detail.value)
+        this.time=e.mp.detail.value;
     }
   },
 

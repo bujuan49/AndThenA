@@ -2,45 +2,14 @@
   <div class="addInterWrap">
     <div class="addInterHead">
       <div>北京</div>
-      <input type="text" />
+      <input type="text" @change="(e)=>chengeFn(e)" v-model="value"/>
     </div>
     <div class="addInterMain">
-      <div>
+      <div v-for="item in addresslist" :key="item.id" @click="toInter(item.title)">
         <p class="iconfont icon-zhifeiji"></p>
         <p>
-          <span>鸟巢</span>
-          <span>北京世国际旅游胜地海淀上地十街</span>
-        </p>
-      </div>
-
-      <div>
-        <p class="iconfont icon-zhifeiji"></p>
-        <p>
-          <span>鸟巢</span>
-          <span>北京世国际旅游胜地海淀上地十街</span>
-        </p>
-      </div>
-
-      <div>
-        <p class="iconfont icon-zhifeiji"></p>
-        <p>
-          <span>鸟巢</span>
-          <span>北京世国际旅游胜地海淀上地十街</span>
-        </p>
-      </div>
-
-      <div>
-        <p class="iconfont icon-zhifeiji"></p>
-        <p>
-          <span>鸟巢</span>
-          <span>北京世国际旅游胜地海淀上地十街</span>
-        </p>
-      </div>
-      <div>
-        <p class="iconfont icon-zhifeiji"></p>
-        <p>
-          <span>鸟巢</span>
-          <span>北京世国际旅游胜地海淀上地十街</span>
+          <span>{{item.title}}</span>
+          <span>{{item.address}}</span>
         </p>
       </div>
     </div>
@@ -48,15 +17,36 @@
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex"
 export default {
   data() {
-    return {};
+    return {
+      value:""
+    };
   },
   //传入组件
-  components: {},
-
-  methods: {},
-
+  computed: {//计算属性
+    ...mapState({
+      addresslist:state => state.address.addresslist
+    })
+  },
+  methods: {//定义函数
+      ...mapActions({
+        getSuggestion:'address/getSuggestion'
+      }),
+      chengeFn(e){
+        this.value=e.mp.detail.value
+        console.log(e)
+        this.getSuggestion(this.value);
+      },
+      toInter(str){
+        wx.navigateTo({url:"/pages/interview/main=?"+JSON.stringify(str)})
+      }
+  },
+  mounted() {
+    console.log(this)
+    this.getSuggestion(this.value);
+  }, 
   created() {
     // let app = getApp()
   }
