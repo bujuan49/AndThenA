@@ -4,14 +4,11 @@
       <li
         v-for="item in list"
         :key="item.id"
-        :class="ind===item.id?'active':' '"
+        :class="ind===item.id?'active':''"
         @click="check(item)"
       >{{item.text}}</li>
     </ul>
     <div class="interviewMain">
-      {{
-        listAll
-      }}
       <ListBox :listAll="listAll" />
     </div>
   </div>
@@ -47,14 +44,14 @@ export default {
       getState: "interviewList/getState"
     }),
     check: function(item) {
+      this.getState(item);
       this.ind = item.id;
-      if (item.text === "全部") {
-        this.getState();
-      }
     }
   },
 
-  created() {}
+  created() {
+    this.getState();
+  }
 };
 </script>
 

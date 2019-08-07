@@ -46,6 +46,9 @@ export default {
       //按钮改变事件
       console.log("switch2 发生 change 事件，携带值为");
     }
+  },
+  onLoad: function(options) {
+    console.log(options);
   }
 };
 </script>

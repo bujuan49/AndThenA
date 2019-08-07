@@ -16,12 +16,24 @@ const mutations = {
 // 模块内的异步改变
 const actions = {
   async getState (context, payload) {
-    let data = await sign(payload)
-    console.log(data.data)
-    context.commit('setState', data.data)
+    if (payload.text === '全部') {
+      let data = await sign(1)
+      context.commit('setState', data.data)
+    } else if (payload.text === '未开始') {
+      let data = await sign()
+      context.commit('setState', data.data)
+    } else if (payload.text === '已放弃') {
+      let data = await sign(-1)
+      context.commit('setState', data.data)
+    } else if (payload.text === '已打卡') {
+      let data = await sign(0)
+      context.commit('setState', data.data)
+    } else {
+      let data = await sign()
+      context.commit('setState', data.data)
+    }
   }
 }
-
 export default {
   namespaced: true,
   state,
