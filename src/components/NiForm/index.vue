@@ -3,7 +3,7 @@
     <div class="boxTop">
       <p class="iconfont icon-zhifeiji"></p>
       <p>一面而就</p>
-      <p>·</p>
+      <p>··</p>
     </div>
     <div class="boxMain">
       <div class="boxText">
@@ -39,7 +39,7 @@
       <p>></p>
     </div>
     <div class="boxBottom">
-      <p>进入小程序</p>
+      <p @click="to">进入小程序</p>
       <p>></p>
     </div>
   </div>
@@ -53,7 +53,13 @@ export default {
   //传入组件
   components: {},
 
-  methods: {},
+  methods: {
+    to() {
+      wx.navigateTo({
+        url: "/pages/interviewList/main"
+      });
+    }
+  },
 
   created() {
     // let app = getApp()
@@ -70,15 +76,18 @@ export default {
   .boxTop {
     display: flex;
     width: 92%;
-    justify-content: space-between;
     margin: 0 auto;
     height: 100rpx;
     line-height: 100rpx;
+    align-items: center;
+    p:nth-child(2) {
+      flex: 1;
+      text-indent: 8rpx;
+    }
   }
 }
 .boxMain {
   flex: 1;
-
   border-top: 1px solid #ccc;
 }
 .boxBottom {
@@ -128,5 +137,9 @@ export default {
       margin-left: 20rpx;
     }
   }
+}
+.iconfont {
+  font-size: 50rpx;
+  padding: 10rpx;
 }
 </style>

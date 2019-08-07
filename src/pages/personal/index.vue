@@ -7,7 +7,7 @@
     <div class="personalMain">
       <div>
         <p class="iconfont icon-shijian"></p>
-        <p>我的面试</p>
+        <p @click="to">我的面试</p>
         <p>></p>
       </div>
       <div>
@@ -32,7 +32,13 @@ export default {
   //传入组件
   components: {},
 
-  methods: {}
+  methods: {
+    to() {
+      wx.navigateTo({
+        url: "/pages/addInter/main"
+      });
+    }
+  }
 };
 </script>
 

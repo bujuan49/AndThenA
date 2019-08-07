@@ -13,7 +13,7 @@
         面试时间:2019-07-04
         <span>21:00</span>
       </p>
-      <p class="okCall no">未提醒</p>
+      <p class="okCall no" @click="to">未提醒</p>
     </div>
   </div>
 </template>
@@ -26,7 +26,13 @@ export default {
   //传入组件
   components: {},
 
-  methods: {},
+  methods: {
+    to() {
+      wx.navigateTo({
+        url: "/pages/personal/main"
+      });
+    }
+  },
 
   created() {
     // let app = getApp()

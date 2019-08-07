@@ -1,7 +1,7 @@
 <template>
   <div class="designWrap">
     <div>
-      <p>面试地址:</p>
+      <p @click="to">面试地址:</p>
       <span class="designText">北京世海淀区西北旺东路中关村软件园二号西区七号</span>
     </div>
     <div>
@@ -31,7 +31,13 @@ export default {
   //传入组件
   components: {},
 
-  methods: {}
+  methods: {
+    to() {
+      wx.navigateTo({
+        url: "/pages/interviewList/main"
+      });
+    }
+  }
 };
 </script>
 
