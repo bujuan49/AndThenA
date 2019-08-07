@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/index/main",
     "pages/clock/main",
     "pages/serve/main",
     "pages/design/main",
     "pages/personal/main",
     "pages/addInter/main",
     "pages/interviewList/main",
-    "pages/index/main",
     "pages/logs/main"
   ],
   "window": {

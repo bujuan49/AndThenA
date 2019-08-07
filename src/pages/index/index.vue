@@ -1,14 +1,16 @@
 <template>
-  <div class="indexWrap">
-        
-    <p>hahah</p>
-  </div>
+  <div class="indexWrap"></div>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {};
+  },
+  //计算属性
+  computed: {
+    
   },
   //传入组件
   components: {},
