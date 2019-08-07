@@ -16,7 +16,9 @@
 import ListBox from "@/components/listBox";
 export default {
   data() {
-    return {};
+    return {
+      // list:
+    };
   },
   //传入组件
   components: {

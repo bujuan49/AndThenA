@@ -85,6 +85,7 @@ export default {
       flex: 1;
       border-left: 1px solid #ccc;
       text-indent: 6rpx;
+      padding-left: 8rpx;
     }
   }
 }

@@ -1,22 +1,26 @@
 <template>
   <div class="serveWrap">
-    <SeverBox></SeverBox>
+    <NiForm></NiForm>
   </div>
 </template>
 
 <script>
-import SeverBox from "@/components/NiForm";
-import ListBox from "@/components/listBox";
+import NiForm from "@/components/NiForm";
 export default {
   data() {
     return {};
   },
   //传入组件
   components: {
-    SeverBox
+    NiForm
   },
 
-  methods: {}
+  methods: {},
+  onLoad() {
+    wx.setNavigationBarTitle({
+      title: "服务通知"
+    });
+  }
 };
 </script>
 
