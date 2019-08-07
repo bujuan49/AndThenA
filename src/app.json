@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/clock/main",
     "pages/serve/main",
     "pages/design/main",
     "pages/personal/main",
