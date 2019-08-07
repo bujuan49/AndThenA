@@ -1,7 +1,12 @@
 <template>
   <div class="interviewListWrap">
     <ul class="interviewListHeader">
-      <li v-for="item in list" :key="item.id" :class="ind===item.id?'active':' '">{{item.text}}</li>
+      <li
+        v-for="item in list"
+        :key="item.id"
+        :class="ind===item.id?'active':' '"
+        @click="check(item)"
+      >{{item.text}}</li>
     </ul>
     <div class="interviewMain">
       <ListBox />
@@ -28,7 +33,14 @@ export default {
     ListBox
   },
 
-  methods: {},
+  methods: {
+    check: function(item) {
+      this.ind = item.id;
+      if (item.text === "全部") {
+        console.log(1);
+      }
+    }
+  },
 
   created() {
     // let app = getApp()
