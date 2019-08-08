@@ -15,7 +15,7 @@ fly.config.baseURL = "https://sign.jasonandjay.com"
 fly.interceptors.request.use((request) => {
   //给所有请求添加自定义header
   const id = wx.getStorageSync('openid')
-  // request.headers["openid"] = id
+  request.headers["openid"] = id
   //终止请求
   //var err=new Error("xxx")
   //err.request=request

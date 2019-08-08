@@ -6,56 +6,85 @@
     </div>
     <div>
       <p>面试时间:</p>
-      <p>2019-07-05 22:00</p>
+      <!-- <p>{{start_time}} 22:00</p> -->
     </div>
     <div>
       <p>联系方式:</p>
-      <p>{{address.create_time}}</p>
+      <p>{{detail.phone}}</p>
     </div>
     <div>
       <p>是否提醒:</p>
-      <p>未提醒</p>
+      <p>{{detail.remind=== 1?'已提醒':'未提醒'}}</p>
     </div>
     <div>
       <p>面试状态:</p>
-      <p>以打卡</p>
+      <p>{{detail.status=== 1?"已放弃":detail.status=== -1 ?'未开始': '已打卡'}}</p>
     </div>
     <div>
       <p>取消提醒:</p>
       <p>
-        <switch @change="switch2Change" />
+        <switch @change="switch2Change(detail.remind)" />
       </p>
     </div>
     <div>
-      <button>去打卡</button>
+      <button>打卡</button>
       <button>放弃面试</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
       //一整个数据
       address: null,
       //地址详细数据
-      detail: null
+      //时间
+      start_time: null
     };
   },
   //传入组件
   components: {},
-
+  computed: {
+    ...mapState({
+      detail: state => state.interviewList.typeAll
+    })
+  },
   methods: {
+    ...mapActions({
+      changeSign: "interviewList/changeSign",
+      details: "interviewList/details"
+    }),
     switch2Change: function(e) {
+      console.log("这是状态 1", e);
+      if (e === 1) {
+        this.changeSign({
+          id: this.detail.id,
+          remind: 0
+        });
+      } else {
+        this.changeSign({
+          id: this.detail.id,
+          remind: 1
+        });
+      }
       //按钮改变事件
-      console.log("switch2 发生 change 事件，携带值为");
+      // this.changeSign({
+      //   id: this.address.id,
+      //   remind: e
+      // });
     }
   },
   onLoad: function(options) {
-    console.log(options)
-    this.address = JSON.parse(options.item);
-    this.detail = JSON.parse(this.address.address);
+    // console.log('新数据',detail);
+    this.details(options.id);
+    // console.log(JSON.parse(options.cartlist));
+    // this.address = JSON.parse(options.cartlist);
+    // console.log('123',detail);
+    // this.start_time = new Date(detail.start_time * 1).toLocaleDateString();
+    // console.log(this.start_time);
   }
 };
 </script>

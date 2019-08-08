@@ -7,6 +7,7 @@
       </div>
       <div class="boxListTwo">
         <!-- <p>{{changes(item.address)}}</p> -->
+        <p>{{item.address}}</p>
         <p></p>
       </div>
       <div class="boxListThree">
@@ -48,15 +49,16 @@ export default {
     },
 
     changes(item) {
-      return JSON.parse(item).address;
+      //地址的问题
+      // console.log(JSON.stringify(item));
+      // return JSON.parse(item).address;
     },
 
     to(item) {
       wx.navigateTo({
-        url: "/pages/clock/main?item=" + JSON.stringify(item)
+        url: "/pages/clock/main?id=" + item.id
       });
     }
-    
   },
 
   created() {}
