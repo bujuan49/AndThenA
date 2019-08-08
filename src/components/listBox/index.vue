@@ -46,15 +46,17 @@ export default {
         "-" +
         (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
     },
+
     changes(item) {
-      // console.log(JSON.parse(item).address);
       return JSON.parse(item).address;
     },
+
     to(item) {
       wx.navigateTo({
-        url: "/pages/clock/main?item=" + item
+        url: "/pages/clock/main?item=" + JSON.stringify(item)
       });
     }
+    
   },
 
   created() {}

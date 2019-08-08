@@ -2,7 +2,7 @@
   <div class="clockWrap">
     <div>
       <p>面试地址:</p>
-      <span class="clockText">北京世海淀区西北旺东路中关村软件园二号西区七号</span>
+      <span class="clockText">{{detail.address}}</span>
     </div>
     <div>
       <p>面试时间:</p>
@@ -10,7 +10,7 @@
     </div>
     <div>
       <p>联系方式:</p>
-      <p>17611790602</p>
+      <p>{{address.create_time}}</p>
     </div>
     <div>
       <p>是否提醒:</p>
@@ -36,7 +36,12 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      //一整个数据
+      address: null,
+      //地址详细数据
+      detail: null
+    };
   },
   //传入组件
   components: {},
@@ -48,7 +53,9 @@ export default {
     }
   },
   onLoad: function(options) {
-    console.log(options);
+    console.log(options)
+    this.address = JSON.parse(options.item);
+    this.detail = JSON.parse(this.address.address);
   }
 };
 </script>

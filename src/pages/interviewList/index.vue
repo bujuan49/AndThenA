@@ -44,8 +44,8 @@ export default {
       getState: "interviewList/getState"
     }),
     check: function(item) {
-      this.getState(item);
-      this.ind = item.id;
+      this.getState(item); //调用方法传参数
+      this.ind = item.id; //点击切换
     }
   },
 
