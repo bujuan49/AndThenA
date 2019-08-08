@@ -5,7 +5,7 @@
       <cover-view class="location" @click="location">
         <button><img src="https://i.52112.com/icon/jpg/256/20160808/2722/142190.jpg" alt=""></button>
       </cover-view>
-      <div><img src="https://i.52112.com/icon/jpg/256/20160616/2231/122256.jpg" alt=""></div>
+      <div class="main"><img src="https://i.52112.com/icon/jpg/256/20160616/2231/122256.jpg" alt=""></div>
     </div>
     <navigator url="/pages/interview/main" class="footer">添加面试</navigator>
   </div>
@@ -58,9 +58,18 @@ export default {
     }
     .location{
       position: fixed;
-      top:50rpx;
+      bottom:140rpx;
       left:20rpx;
      img{
+        width: 50rpx;
+        height: 40rpx;
+      }
+    }
+    .main{
+      position: fixed;
+      bottom:140rpx;
+      right:20rpx;
+      img{
         width: 50rpx;
         height: 40rpx;
       }

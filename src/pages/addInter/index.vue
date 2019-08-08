@@ -5,7 +5,7 @@
       <input type="text" @change="(e)=>chengeFn(e)" v-model="value"/>
     </div>
     <div class="addInterMain">
-      <div v-for="item in addresslist" :key="item.id" @click="toInter(item.title)">
+      <div v-for="item in addresslist" :key="item.id" @click="toInter(item)">
         <p class="iconfont icon-zhifeiji"></p>
         <p>
           <span>{{item.title}}</span>
@@ -36,11 +36,11 @@ export default {
       }),
       chengeFn(e){
         this.value=e.mp.detail.value
-        console.log(e)
         this.getSuggestion(this.value);
       },
       toInter(str){
-        wx.navigateTo({url:"/pages/interview/main=?"+JSON.stringify(str)})
+        console.log("str...",str)
+        wx.navigateTo({url:"/pages/interview/main?str="+ JSON.stringify(str)})
       }
   },
   mounted() {

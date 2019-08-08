@@ -2,66 +2,168 @@
   <div class="homewrap">
     <div class="content">
       <div class="title">添加面试</div>
-      <div class="inp_box">
-        <span>公司名称</span>
-        <input type="text" placeholder="请输入公司名称">
-      </div>
-       <div class="inp_box">
-         <span>公司电话</span>
-        <input type="text" placeholder="请输入面试联系人电话">
-      </div>
-       <div class="inp_box">
-        <span>面试时间</span>
-        <picker mode="date" :value="date" start="2015-09-01" end="2019-10-01" @change="bindPickerChange">
-            <view class="picker">
-             {{date}}
-            </view>
-        </picker>
-        <picker mode="time" :value="time" start="00:00" end="24:00" @change="bindChangeTime">
-            <view class="picker">
-              {{time}}
-            </view>
-        </picker>
-      </div>
-       <div class="inp_box">
-        <span>面试地址</span>
-        <navigator url="/pages/addInter/main"><input type="text" placeholder="请选择面试地址"></navigator>
-      </div>
-      <div class="title">备注信息</div>
-      <div class="text_box">
-        <textarea name="" id="textarea" cols="10" rows="50" placeholder="备注信息(可选,100个字以内)"></textarea>
-      </div>
-      <div class="footer">确认</div>
+      <form @submit="formSubmit" report-submit>
+        <div class="inp_box">
+          <label>公司名称</label>
+          <input  type="text" name="name" placeholder="请输入公司名称" v-model="current.company">
+        </div>
+        <div class="inp_box">
+          <label>公司电话</label>
+          <input  type="text" name="tel" placeholder="请输入面试联系人电话" v-model="current.phone">
+        </div>
+        <div class="inp_box">
+          <label>面试时间</label>
+            <picker
+              mode="multiSelector"
+              :range="formatTime"
+              :value="info.date"
+              @change="dateChange"
+              @columnchange="columnChange"
+            ><view class="date">{{dateShow}}</view>
+          </picker>
+        </div>
+        <div class="inp_box">
+          <label>面试地址</label>
+          <navigator url="/pages/addInter/main"><input name="address" type="text" v-model="intervalue" placeholder="请选择面试地址"></navigator>
+        </div>
+        <div class="title">备注信息</div>
+        <div class="text_box">
+          <textarea name="text" id="textarea" cols="10" rows="50" placeholder="备注信息(可选,100个字以内)" 
+          v-model="current.description" ></textarea>
+        </div>
+        <button class="footer" form-type="submit">确认</button>
+      </form>
+      
     </div>
   </div>
 </template>
 
 <script>
+import {mapState,mapActions} from "vuex";
+const moment =require("moment");
+const range = [
+  [0,1,2,3,4,5,6,7,8,9],
+  [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+  ['00分','10分','20分','30分','40分','50分']
+];
 export default {
    data () {
     return {
-     date:"2019-08-07",
-     time:"08:00"
+      info:{date:[0,0,0]},
+      company_name:"",
+      company_tel:"",
+      date:"2019-08-07",
+      time:"08:00",
+      intervalue:"",
+      textarea:"",
+      longitude:"",//经度
+      latitude:"",//纬度
+      form_id:""
     }
   },
 
   components: {
    
   },
+  computed: {
+    ...mapState({
+      current:state=>state.addInterview.current
+    }),
+    formatTime(){
+      let dateRange=[...range];
+      if(!this.info.date[0]){
+        dateRange[1]=dateRange[1].filter(item=>{
+          return item>moment().hour();
+        })
+      }else{
+        dateRange[1]=range[1]
+      }
 
+      //格式化小时
+      dateRange[1]=dateRange[1].map(item=>{
+        return item+'点'
+      })
+      //计算当前日期之后的天
+      dateRange[0]=dateRange[0].map(item=>{
+        return moment().add(item,'days').date()+'号'
+      })
+      console.log(dateRange)
+      return dateRange;
+      
+    },
+    
+    dateShow(){
+      return moment()
+      .add(moment().hour()==23?this.info.date[0]-1:this.info.date[0],'d')
+      .add(this.info.date[1]+1,'h')
+      .minute(this.info.date[2]*10)
+      .format('YYYY-MM-DD HH:mm');
+    },
+  },
   methods: {
+    ...mapActions({
+      submitInterview:'addInterview/submit'
+    }),
+   columnChange(e){
+      let {column, value} = e.target;
+      let date = [...this.info.date];
+      date[column] = value;
+      this.info.date = date;
+    },
     bindPickerChange (e) {
-        //console.log('picker发送选择改变，携带值为', e.mp.detail.value)
         this.date= e.mp.detail.value;
     },
     bindChangeTime(e){
-        //console.log('picker发送选择改变，携带值为', e.mp.detail.value)
         this.time=e.mp.detail.value;
-    }
+    },
+    //提交添加面试
+    async formSubmit (e) {
+      console.log(111)
+      this.current.company=e.mp.detail.value.name;
+      this.current.phone=e.mp.detail.value.tel;
+      this.current.address=this.intervalue;
+      this.current.description=e.mp.detail.value.text;
+      this.current.form_id = e.target.formId;
+      this.current.latitude=this.latitude;
+      this.current.longitude=this.longitude,
+      this.form_id=e.mp.detail.formId
+      //添加时间戳
+      this.current.start_time = moment(this.dateShow).unix()*1000;
+      let data = await this.submitInterview(this.current);
+      console.log(data)
+      console.log('form发生了submit事件，携带数据为：', e.mp.detail.value)
+    },
+    // submitMs(){ //提交——添加面试
+    //   this.addSign({
+
+    //   })
+    //   wx.showModal({
+    //       title: '温馨提示',
+    //       content: '面试添加成功',
+    //       showCancel:false,
+    //       success (res) {
+    //         if (res.confirm) {
+    //           console.log('用户点击确定')
+    //           //wx.navigateTo({url:"/pages/interviewList/main"})
+    //         } else if (res.cancel) {
+    //           console.log('用户点击取消')
+    //         }
+    //       }
+    //   })
+    // }
   },
 
   created () {
-    // let app = getApp()
+    // 如果当前时间是十一点之后，过滤掉今天
+    if (moment().hour() == 23){
+      this.info.date = [1,0,0];
+    }
+  },
+  onLoad:function(options){
+    this.intervalue=JSON.parse(options.str).title
+    this.longitude=JSON.parse(options.str).location.lng
+    this.latitude=JSON.parse(options.str).location.lat
+    console.log(JSON.parse(options.str))
   }
 }
 </script>
@@ -93,8 +195,15 @@ export default {
       border-bottom: 1px solid #e5e5e5;
       display: flex;
       align-items: center;
+      p{
+        display: flex;
+        align-items: center;
+      }
       span{
         margin: 0 10rpx;
+      }
+      label{
+        margin:0 10rpx;
       }
     }
     .text_box{
@@ -107,11 +216,13 @@ export default {
   .footer{
     width: 100%;
     height: 100rpx;
+    background: none;
     background:#666;
     display: flex;
     align-items: center;
     justify-content: center;
     color:#fff;
+    outline: none;
   }
 }
 </style>

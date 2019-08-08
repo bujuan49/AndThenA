@@ -6,7 +6,7 @@ const state = {
 
 // 模块内的同步改变
 const mutations = {
-  updateLocation(state, payload) {
+  updateLocation (state, payload) {
     state.longitude = payload.longitude
     state.latitude = payload.latitude
   }
@@ -14,11 +14,10 @@ const mutations = {
 
 // 模块内的异步改变
 const actions = {
-  getLocation({ commit }, payload) {
+  getLocation ({ commit }, payload) {
     wx.getLocation({
       type: 'wgs84',
-      success(res) {
-        console.log('res...', res)
+      success (res) {
         commit('updateLocation', res)
       }
     })

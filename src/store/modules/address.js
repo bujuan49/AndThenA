@@ -9,7 +9,6 @@ const state = {
 } 
 const mutations = {
   getAddresslist (state, payload) {
-    console.log('res2...', payload.data)
     state.addresslist = payload.data
   }
 }
@@ -19,7 +18,6 @@ const actions = {
     qqMapSdk.getSuggestion({
       keyword: payload,
       success (res) {
-        console.log('res...', res)
         commit('getAddresslist', res)
       }
     })

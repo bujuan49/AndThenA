@@ -19,6 +19,7 @@ export default {
           //发起网络请求
           let data = await login(res.code);
           console.log("res...", data);
+          window.localStorage.setItem("openid",data.data.openid)
         } else {
           console.log("登录失败！" + res.errMsg);
         }

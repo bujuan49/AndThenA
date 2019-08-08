@@ -1,6 +1,7 @@
-var Fly = require("flyio/dist/npm/wx")
+var Fly = require ('flyio/dist/npm/wx')
 const fly = new Fly;
-
+let openid = window.localStorage.getItem('openid');
+console.log(openid)
 //定义公共headers
 // fly.config.headers={
 //   "content-type":"application/x-www-form-urlencoded"
@@ -8,12 +9,12 @@ const fly = new Fly;
 //设置超时
 fly.config.timeout = 10000;
 //设置请求基地址
-fly.config.baseURL = "https://sign.jasonandjay.com"
+fly.config.baseURL = 'https://sign.jasonandjay.com'
 
 //添加请求拦截器
-fly.interceptors.request.use((request)=>{
+fly.interceptors.request.use((request) => {
   //给所有请求添加自定义header
-  request.headers["X-Tag"]="flyio";
+  request.headers['X-Tag'] = 'flyio';
   //打印出请求体
   console.log(request.body)
   //终止请求
