@@ -2,11 +2,11 @@
   <div class="clockWrap">
     <div>
       <p>面试地址:</p>
-      <span class="clockText">{{detail.address}}</span>
+      <span class="clockText">{{onclick(detail)}}</span>
     </div>
     <div>
       <p>面试时间:</p>
-      <!-- <p>{{start_time}} 22:00</p> -->
+      <p>{{start_time}} 22:00</p>
     </div>
     <div>
       <p>联系方式:</p>
@@ -55,8 +55,12 @@ export default {
   methods: {
     ...mapActions({
       changeSign: "interviewList/changeSign",
-      details: "interviewList/details"
+      details: "interviewList/details",
+      address: "interviewList/address"
     }),
+    onclick: function(item) {
+      return JSON.parse(item.address).address;
+    },
     switch2Change: function(e) {
       console.log("这是状态 1", e);
       if (e === 1) {
@@ -72,15 +76,15 @@ export default {
         });
         this.details(this.detail.id);
       }
-      //按钮改变事件
-      // this.changeSign({
-      //   id: this.address.id,
-      //   remind: e
-      // });
     }
+  },
+  mouted() {
+    console.log(1);
+   
   },
   onLoad: function(options) {
     this.details(options.id);
+    // console.log(this.detail);
   }
 };
 </script>

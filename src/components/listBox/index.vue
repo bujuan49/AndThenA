@@ -3,7 +3,7 @@
     <div class="interviewMainBox" v-for="item in listAll" :key="item.id" @click="to(item)">
       <div class="boxListOne">
         <p>{{item.company}}</p>
-        <p :class="item.remind===-1?'okCall no':'okCall end'">{{item.remind===-1 ? '未开始': '已打卡'}}</p>
+        <p :class="item.remind===-1?'okCall no':'okCall end'">{{item.remind===0 ? '未开始': '已打卡'}}</p>
       </div>
       <div class="boxListTwo">
         <!-- <p>{{changes(item.address)}}</p> -->
