@@ -13,7 +13,7 @@ const mutations = {
     state.listAll = data
     // console.log('...state', state, data)
   },
-  newState (state, data) {
+  newState (state, data) { // xq
     state.typeAll = data
   }
 }
@@ -21,8 +21,6 @@ const mutations = {
 // 模块内的异步改变
 const actions = {
   async getState (context, payload) {
-    // console.log('1111111111', payload)
-    // context.commit('newState', payload)
     if (payload.text === '全部') {
       let data = await sign(1)
       context.commit('setState', data.data)
@@ -43,16 +41,18 @@ const actions = {
   async changeSign (context, payload) { // 更新
     let d = await changeSign(payload)
     console.log(d)
-
+    console.log(payload)
     // let data = await newSign(payload)
     // console.log(data)
     // this.getState(context, this.state.typeAll)
     // let datas = await sign(1)
     // context.commit('details')
-    // this.details()
+    // this.details(context, payload.id)
+    // console.log(this)
   },
   async details (context, payload) { // 获取详情
     let data = await newSign(payload)
+    console.log(data)
     context.commit('newState', data.data)
   }
 }

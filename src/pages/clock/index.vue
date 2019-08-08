@@ -64,11 +64,13 @@ export default {
           id: this.detail.id,
           remind: 0
         });
+        this.details(this.detail.id);
       } else {
         this.changeSign({
           id: this.detail.id,
           remind: 1
         });
+        this.details(this.detail.id);
       }
       //按钮改变事件
       // this.changeSign({
@@ -78,13 +80,7 @@ export default {
     }
   },
   onLoad: function(options) {
-    // console.log('新数据',detail);
     this.details(options.id);
-    // console.log(JSON.parse(options.cartlist));
-    // this.address = JSON.parse(options.cartlist);
-    // console.log('123',detail);
-    // this.start_time = new Date(detail.start_time * 1).toLocaleDateString();
-    // console.log(this.start_time);
   }
 };
 </script>
