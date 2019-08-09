@@ -2,11 +2,11 @@
   <div class="clockWrap">
     <div>
       <p>面试地址:</p>
-      <span class="clockText">{{onclick(detail)}}</span>
+      <span class="clockText">{{detail && detail.address.address}}</span>
     </div>
     <div>
       <p>面试时间:</p>
-      <p>{{start_time}} 22:00</p>
+      <p>{{detail &&detail.start_time}} 22:00</p>
     </div>
     <div>
       <p>联系方式:</p>

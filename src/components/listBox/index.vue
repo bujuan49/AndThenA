@@ -7,13 +7,12 @@
       </div>
       <div class="boxListTwo">
         <!-- <p>{{changes(item.address)}}</p> -->
-        <p>{{item.address}}</p>
-        <p></p>
+        <p>{{item.address.address}}</p>
       </div>
       <div class="boxListThree">
         <p>
-          面试时间:2019-07-04
-          <span>{{items(item)}}</span>
+          面试时间:{{item.start_time}}
+          <span></span>
         </p>
         <p class="okCall no">未提醒</p>
       </div>
@@ -34,40 +33,11 @@ export default {
   components: {},
 
   methods: {
-    ...mapActions({
-      strAddress: "interviewList/strAddress"
-    }),
-    items(item) {
-      //开始时间
-      // var time = item.start_time;
-      // var time2 = Date.now();
-      // var date = new Date(time * 1000);
-      // var dt =
-      //   date.getFullYear() +
-      //   "-" +
-      //   (date.getMonth() < 10
-      //     ? "0" + (date.getMonth() + 1)
-      //     : date.getMonth() + 1) +
-      //   "-" +
-      //   (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
-    },
-
-    changes(item) {
-      //地址的问题
-      // console.log(JSON.stringify(item));
-      // return JSON.parse(item).address;
-    },
-
     to(item) {
       wx.navigateTo({
         url: "/pages/clock/main?id=" + item.id
       });
     }
-  },
-
-  created() {
-    // console.log(this.listAll)
-    this.strAddress(this.listAll);
   }
 };
 </script>

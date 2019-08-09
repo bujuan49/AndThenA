@@ -11,46 +11,52 @@ const state = {
 const mutations = {
   setState (state, data) {
     state.listAll = data
-    // console.log('...state', state, data)
   },
   newState (state, data) { // xq
     state.typeAll = data
-  },
-  jsonAdres (state, data) {
-    console.log(state, '1')
   }
 }
-
 // 模块内的异步改变
 const actions = {
   async getState (context, payload) {
     if (payload.text === '全部') {
-      console.log('All')
       let data = await sign()
+      data.data.forEach(item => {
+        item.address = JSON.parse(item.address)
+        item.start_time = new Date(item.start_time * 1).toLocaleDateString()
+      })
       context.commit('setState', data.data)
     } else if (payload.text === '未开始') {
       let data = await sign(-1)
+      data.data.forEach(item => {
+        item.address = JSON.parse(item.address)
+        item.start_time = new Date(item.start_time * 1).toLocaleDateString()
+      })
       context.commit('setState', data.data)
     } else if (payload.text === '已开始') {
-      console.log('start')
       let data = await sign(0)
+      data.data.forEach(item => {
+        item.address = JSON.parse(item.address)
+        item.start_time = new Date(item.start_time * 1).toLocaleDateString()
+      })
       context.commit('setState', data.data)
     } else {
-      console.log(2)
-      // let data = await sign(1)
-      // context.commit('setState', data.data)
+      let data = await sign(1)
+      data.data.forEach(item => {
+        item.address = JSON.parse(item.address)
+        item.start_time = new Date(item.start_time * 1).toLocaleDateString()
+      })
+      context.commit('setState', data.data)
     }
   },
   async changeSign (context, payload) { // 更新
-    let data = await changeSign(payload)
-    console.log(data)
+    await changeSign(payload)
   },
   async details (context, payload) { // 获取详情
     let data = await newSign(payload)
+    data.data.address = JSON.parse(data.data.address)
+    data.data.start_time = new Date(data.data.start_time * 1).toLocaleDateString()
     context.commit('newState', data.data)
-  },
-  async strAddress (context, payload) { // 改变地址的json
-    console.log(payload)
   }
 }
 export default {
