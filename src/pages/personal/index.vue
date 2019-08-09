@@ -14,14 +14,14 @@
         <p class="iconfont icon-shijian"></p>
         <p>我的面试</p>
         <p>></p>
-        <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber"></button>
+        <!-- <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber"></button> -->
       </div>
     </div>
-    <div class="z_Modal">
+    <div class="z_Modal" v-if="show">
       <div class="z_content">
         <p>为了更好的使用我们的服务,我们需要获取你的手机号</p>
         <div class="z_btn">
-          <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">同意</button>
+          <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" >同意</button>
         </div>
       </div>
     </div>
@@ -29,19 +29,23 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState,mapMutations } from "vuex";
 export default {
   data() {
     return {};
   },
   computed: {
     ...mapState({
-      phone: state => state.phone.phone
+      phone: state => state.phone.phone,
+      show:state=>state.phone.show
     })
   },
   methods: {
     ...mapActions({
       decrypt: "phone/decrypt"
+    }),
+     ...mapMutations({
+      showFn: 'phone/showFn'
     }),
     getPhoneNumber(e) {
       let { encryptedData, iv } = e.target;
@@ -50,18 +54,13 @@ export default {
         encryptedData,
         iv
       });
+      this.showFn({show:false})
     },
     to() {
       wx.navigateTo({
         url: "/pages/addInter/main"
       });
     },
-    getPhoneNumber (e) {
-      console.log("0000000",e)
-      // console.log(e, "phone");
-      // console.log(e.detail.iv)
-      // console.log(e.detail.encryptedData)
-    }
   }
 };
 </script>

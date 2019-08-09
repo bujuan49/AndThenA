@@ -1,8 +1,12 @@
 import {decrypt, fingerPrint} from '../../service/index'
 const state = {
-  phone: null
+  phone: null,
+  show: true
 }
 const mutations = {
+  showFn (state, stud) {
+    state.show = stud.show
+  },
   phone (state, item) {
     state.phone = item.substr(0, 3) + '****' + item.substr(7)
   }

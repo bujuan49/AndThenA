@@ -14,7 +14,7 @@
           <img src="https://i.52112.com/icon/jpg/256/20160808/2722/142190.jpg" alt />
         </button>
       </cover-view>
-      <div class="main"><div class="iconfont icon-touxiang"></div></div>
+      <div class="main"><div class="iconfont icon-touxiang" @click="meinTo"></div></div>
     </div>
     <navigator url="/pages/interview/main" class="footer">添加面试</navigator>
   </div>
@@ -39,7 +39,12 @@ export default {
     ...mapActions({
       location: "home/getLocation",
       fingerPrint: "phone/fingerPrint"
-    })
+    }),
+    meinTo(){
+      wx.navigateTo({
+        url: '/pages/personal/main',
+      });
+    }
   },
 
   created() {},
@@ -92,10 +97,7 @@ export default {
       position: fixed;
       bottom: 140rpx;
       right: 20rpx;
-      img {
-        width: 50rpx;
-        height: 40rpx;
-      }
+      .icon-touxiang{font-size:28px;color:rgba(3, 85, 180, 0.781)}
     }
   }
   .footer {
