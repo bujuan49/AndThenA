@@ -14,7 +14,7 @@ const mutations = {
 // 模块内的异步改变
 const actions = {
   async submit (state, {...payload}) {
-    return new Promise(async (resolve, reject) =>{
+    return new Promise(async (resolve, reject) => {
       let result = await addSign(payload)
       resolve(result)
     })

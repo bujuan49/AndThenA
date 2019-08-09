@@ -2,7 +2,7 @@
   <div class="addInterWrap">
     <div class="addInterHead">
       <div>北京</div>
-      <input type="text" @change="(e)=>chengeFn(e)" v-model="value"/>
+      <input type="text" @input="(e)=>chengeFn(e)" v-model="value"/>
     </div>
     <div class="addInterMain">
       <div v-for="item in addresslist" :key="item.id" @click="toInter(item)">

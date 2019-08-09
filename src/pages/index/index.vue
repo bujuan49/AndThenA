@@ -5,7 +5,7 @@
       <cover-view class="location" @click="location">
         <button><img src="https://i.52112.com/icon/jpg/256/20160808/2722/142190.jpg" alt=""></button>
       </cover-view>
-      <div class="main"><img src="https://i.52112.com/icon/jpg/256/20160616/2231/122256.jpg" alt=""></div>
+      <div class="main"><div class="iconfont icon-touxiang"></div></div>
     </div>
     <navigator url="/pages/interview/main" class="footer">添加面试</navigator>
   </div>

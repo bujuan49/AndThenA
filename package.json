@@ -25,11 +25,15 @@
   },
   "dependencies": {
     "flyio": "^0.6.14",
+    "fs": "0.0.1-security",
     "moment": "^2.24.0",
     "mpvue": "^2.0.0",
+    "net": "^1.0.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
-    "vuex": "^3.1.1"
+    "tls": "0.0.1",
+    "vuex": "^3.1.1",
+    "wx-server-sdk": "^0.8.1"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
