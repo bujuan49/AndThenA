@@ -22,13 +22,67 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "interviewList",
+					"pathName": "pages/interviewList/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "\"pages/index/main\",",
+					"pathName": "pages/index/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "\"pages/addInter/main\",",
+					"pathName": "pages/addInter/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "\"pages/personal/main\",",
+					"pathName": "pages/personal/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "\"pages/design/main\",",
+					"pathName": "pages/design/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "\"pages/serve/main\",",
+					"pathName": "pages/serve/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "\"pages/interviewList/main\",",
+					"pathName": "pages/interviewList/main",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

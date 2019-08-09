@@ -8,9 +8,7 @@
     "pages/personal/main",
     "pages/addInter/main",
     "pages/interview/main",
-    "pages/counter/main",
-    "pages/selectaddress/main",
-    "pages/logs/main"
+    "pages/selectaddress/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

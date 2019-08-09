@@ -4,17 +4,18 @@
       <li
         v-for="item in list"
         :key="item.id"
-        :class="ind===item.id?'active':' '"
+        :class="ind===item.id?'active':''"
         @click="check(item)"
       >{{item.text}}</li>
     </ul>
     <div class="interviewMain">
-      <ListBox />
+      <ListBox :listAll="listAll" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 import ListBox from "@/components/listBox";
 export default {
   data() {
@@ -32,18 +33,24 @@ export default {
   components: {
     ListBox
   },
+  computed: {
+    ...mapState({
+      listAll: state => state.interviewList.listAll
+    })
+  },
 
   methods: {
+    ...mapActions({
+      getState: "interviewList/getState"
+    }),
     check: function(item) {
-      this.ind = item.id;
-      if (item.text === "全部") {
-        console.log(1);
-      }
+      this.getState(item); //调用方法传参数
+      this.ind = item.id; //点击切换
     }
   },
 
   created() {
-    // let app = getApp()
+    this.getState();
   }
 };
 </script>

@@ -2,50 +2,89 @@
   <div class="clockWrap">
     <div>
       <p>面试地址:</p>
-      <span class="clockText">北京世海淀区西北旺东路中关村软件园二号西区七号</span>
+      <span class="clockText">{{onclick(detail)}}</span>
     </div>
     <div>
       <p>面试时间:</p>
-      <p>2019-07-05 22:00</p>
+      <p>{{start_time}} 22:00</p>
     </div>
     <div>
       <p>联系方式:</p>
-      <p>17611790602</p>
+      <p>{{detail.phone}}</p>
     </div>
     <div>
       <p>是否提醒:</p>
-      <p>未提醒</p>
+      <p>{{detail.remind=== 1?'已提醒':'未提醒'}}</p>
     </div>
     <div>
       <p>面试状态:</p>
-      <p>以打卡</p>
+      <p>{{detail.status=== 1?"已放弃":detail.status=== -1 ?'未开始': '已打卡'}}</p>
     </div>
     <div>
       <p>取消提醒:</p>
       <p>
-        <switch @change="switch2Change" />
+        <switch @change="switch2Change(detail.remind)" />
       </p>
     </div>
     <div>
-      <button>去打卡</button>
+      <button>打卡</button>
       <button>放弃面试</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      //一整个数据
+      address: null,
+      //地址详细数据
+      //时间
+      start_time: null
+    };
   },
   //传入组件
   components: {},
-
+  computed: {
+    ...mapState({
+      detail: state => state.interviewList.typeAll
+    })
+  },
   methods: {
+    ...mapActions({
+      changeSign: "interviewList/changeSign",
+      details: "interviewList/details",
+      address: "interviewList/address"
+    }),
+    onclick: function(item) {
+      return JSON.parse(item.address).address;
+    },
     switch2Change: function(e) {
-      //按钮改变事件
-      console.log("switch2 发生 change 事件，携带值为");
+      console.log("这是状态 1", e);
+      if (e === 1) {
+        this.changeSign({
+          id: this.detail.id,
+          remind: 0
+        });
+        this.details(this.detail.id);
+      } else {
+        this.changeSign({
+          id: this.detail.id,
+          remind: 1
+        });
+        this.details(this.detail.id);
+      }
     }
+  },
+  mouted() {
+    console.log(1);
+   
+  },
+  onLoad: function(options) {
+    this.details(options.id);
+    // console.log(this.detail);
   }
 };
 </script>

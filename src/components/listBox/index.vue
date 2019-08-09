@@ -1,25 +1,31 @@
 <template>
-  <div class="interviewMainBox">
-    <div class="boxListOne">
-      <p>百度</p>
-      <p class="okCall end">已打卡</p>
-    </div>
-    <div class="boxListTwo">
-      <p>北京市海淀区上地十街10号</p>
-      <p></p>
-    </div>
-    <div class="boxListThree">
-      <p>
-        面试时间:2019-07-04
-        <span>21:00</span>
-      </p>
-      <p class="okCall no" @click="to">未提醒</p>
+  <div>
+    <div class="interviewMainBox" v-for="item in listAll" :key="item.id" @click="to(item)">
+      <div class="boxListOne">
+        <p>{{item.company}}</p>
+        <p :class="item.remind===-1?'okCall no':'okCall end'">{{item.remind===0 ? '未开始': '已打卡'}}</p>
+      </div>
+      <div class="boxListTwo">
+        <!-- <p>{{changes(item.address)}}</p> -->
+        <p>{{item.address}}</p>
+        <p></p>
+      </div>
+      <div class="boxListThree">
+        <p>
+          面试时间:2019-07-04
+          <span>{{items(item)}}</span>
+        </p>
+        <p class="okCall no">未提醒</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    listAll: Object
+  },
   data() {
     return {};
   },
@@ -27,16 +33,35 @@ export default {
   components: {},
 
   methods: {
-    to() {
+    items(item) {
+      //开始时间
+      var time = item.start_time;
+      var time2 = Date.now();
+      var date = new Date(time * 1000);
+      var dt =
+        date.getFullYear() +
+        "-" +
+        (date.getMonth() < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1) +
+        "-" +
+        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
+    },
+
+    changes(item) {
+      //地址的问题
+      // console.log(JSON.stringify(item));
+      // return JSON.parse(item).address;
+    },
+
+    to(item) {
       wx.navigateTo({
-        url: "/pages/personal/main"
+        url: "/pages/clock/main?id=" + item.id
       });
     }
   },
 
-  created() {
-    // let app = getApp()
-  }
+  created() {}
 };
 </script>
 <style scoped lang="scss">
@@ -84,6 +109,7 @@ export default {
   color: rgb(64, 185, 255);
   background: rgb(236, 245, 255);
 }
+
 .no {
   color: rgb(144, 157, 153);
   background: rgb(244, 244, 245);
