@@ -1,5 +1,4 @@
 <template>
-
   <div class="designWrap">
     <div>
       <p @click="to">面试地址:</p>
@@ -11,15 +10,15 @@
     </div>
     <div>
       <p>联系方式:</p>
-      <p>17611790602</p>
+       <p>{{detail &&detail.phone}}</p>
     </div>
     <div>
       <p>是否提醒:</p>
-      <p>未提醒</p>
+     <p>{{detail &&detail.remind=== 1?'已提醒':'未提醒'}}</p>
     </div>
     <div>
       <p>面试状态:</p>
-      <p>以打卡</p>
+      <p>{{detail && detail.status=== 1?"已放弃":detail.status=== -1 ?'未开始': '已打卡'}}</p>
     </div>
   </div>
 </template>
@@ -27,7 +26,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      detail: null
+    };
   },
   //传入组件
   components: {},
@@ -38,6 +39,10 @@ export default {
         url: "/pages/interviewList/main"
       });
     }
+  },
+  onLoad: function(options) {
+    this.detail = JSON.parse(options.item);
+    console.log(this.detail)
   }
 };
 </script>

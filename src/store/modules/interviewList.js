@@ -15,38 +15,42 @@ const mutations = {
   },
   newState (state, data) { // xq
     state.typeAll = data
+  },
+  jsonAdres (state, data) {
+    console.log(state, '1')
   }
 }
 
 // 模块内的异步改变
 const actions = {
-  async address (item) {
-    console.log(item, '1')
-  },
   async getState (context, payload) {
     if (payload.text === '全部') {
-      let data = await sign(1)
-      context.commit('setState', data.data)
-    } else if (payload.text === '未开始') {
+      console.log('All')
       let data = await sign()
       context.commit('setState', data.data)
-    } else if (payload.text === '已放弃') {
-      let data = await sign(1)
+    } else if (payload.text === '未开始') {
+      let data = await sign(-1)
       context.commit('setState', data.data)
-    } else if (payload.text === '已打卡') {
+    } else if (payload.text === '已开始') {
+      console.log('start')
       let data = await sign(0)
       context.commit('setState', data.data)
     } else {
-      let data = await sign()
-      context.commit('setState', data.data)
+      console.log(2)
+      // let data = await sign(1)
+      // context.commit('setState', data.data)
     }
   },
   async changeSign (context, payload) { // 更新
-    await changeSign(payload)
+    let data = await changeSign(payload)
+    console.log(data)
   },
   async details (context, payload) { // 获取详情
     let data = await newSign(payload)
     context.commit('newState', data.data)
+  },
+  async strAddress (context, payload) { // 改变地址的json
+    console.log(payload)
   }
 }
 export default {

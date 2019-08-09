@@ -10,15 +10,15 @@
     </div>
     <div>
       <p>联系方式:</p>
-      <p>{{detail.phone}}</p>
+      <p>{{detail &&detail.phone}}</p>
     </div>
     <div>
       <p>是否提醒:</p>
-      <p>{{detail.remind=== 1?'已提醒':'未提醒'}}</p>
+      <p>{{detail &&detail.remind=== 1?'已提醒':'未提醒'}}</p>
     </div>
     <div>
       <p>面试状态:</p>
-      <p>{{detail.status=== 1?"已放弃":detail.status=== -1 ?'未开始': '已打卡'}}</p>
+      <p>{{detail && detail.status=== 1?"已放弃":detail.status=== -1 ?'未开始': '已打卡'}}</p>
     </div>
     <div>
       <p>取消提醒:</p>
@@ -28,7 +28,7 @@
     </div>
     <div>
       <button>打卡</button>
-      <button>放弃面试</button>
+      <button @click="abandon(detail.status)">放弃面试</button>
     </div>
   </div>
 </template>
@@ -42,7 +42,8 @@ export default {
       address: null,
       //地址详细数据
       //时间
-      start_time: null
+      start_time: null,
+      flag: true
     };
   },
   //传入组件
@@ -59,10 +60,9 @@ export default {
       address: "interviewList/address"
     }),
     onclick: function(item) {
-      return JSON.parse(item.address).address;
+      // console.log(JSON.parse(item.address).address)
     },
     switch2Change: function(e) {
-      console.log("这是状态 1", e);
       if (e === 1) {
         this.changeSign({
           id: this.detail.id,
@@ -76,15 +76,29 @@ export default {
         });
         this.details(this.detail.id);
       }
+    },
+    abandon: function(abandon) {
+      //放弃
+      wx.showModal({
+        title: "是否放弃面试",
+        success: res => {
+          if (res.confirm) {
+            this.changeSign({
+              id: this.detail.id,
+              remind: 1,
+              status: 1
+            });
+            wx.navigateTo({
+              url: "/pages/design/main?item=" +JSON.stringify(this.detail)
+            });
+          }
+          this.details(this.detail.id);
+        }
+      });
     }
-  },
-  mouted() {
-    console.log(1);
-   
   },
   onLoad: function(options) {
     this.details(options.id);
-    // console.log(this.detail);
   }
 };
 </script>

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: {
     listAll: Object
@@ -33,19 +34,22 @@ export default {
   components: {},
 
   methods: {
+    ...mapActions({
+      strAddress: "interviewList/strAddress"
+    }),
     items(item) {
       //开始时间
-      var time = item.start_time;
-      var time2 = Date.now();
-      var date = new Date(time * 1000);
-      var dt =
-        date.getFullYear() +
-        "-" +
-        (date.getMonth() < 10
-          ? "0" + (date.getMonth() + 1)
-          : date.getMonth() + 1) +
-        "-" +
-        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
+      // var time = item.start_time;
+      // var time2 = Date.now();
+      // var date = new Date(time * 1000);
+      // var dt =
+      //   date.getFullYear() +
+      //   "-" +
+      //   (date.getMonth() < 10
+      //     ? "0" + (date.getMonth() + 1)
+      //     : date.getMonth() + 1) +
+      //   "-" +
+      //   (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
     },
 
     changes(item) {
@@ -61,7 +65,10 @@ export default {
     }
   },
 
-  created() {}
+  created() {
+    // console.log(this.listAll)
+    this.strAddress(this.listAll);
+  }
 };
 </script>
 <style scoped lang="scss">
