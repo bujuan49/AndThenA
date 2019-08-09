@@ -27,7 +27,7 @@
       </p>
     </div>
     <div>
-      <button>打卡</button>
+      <button @click="to">打卡</button>
       <button @click="abandon(detail.status)">放弃面试</button>
     </div>
   </div>
@@ -59,6 +59,11 @@ export default {
       details: "interviewList/details",
       address: "interviewList/address"
     }),
+    to() {
+      wx.navigateTo({
+        url: "/pages/index/main"
+      });
+    },
     onclick: function(item) {
       // console.log(JSON.parse(item.address).address)
     },
@@ -89,7 +94,7 @@ export default {
               status: 1
             });
             wx.navigateTo({
-              url: "/pages/design/main?item=" +JSON.stringify(this.detail)
+              url: "/pages/design/main?item=" + JSON.stringify(this.detail)
             });
           }
           this.details(this.detail.id);

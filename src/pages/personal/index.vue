@@ -14,7 +14,6 @@
         <p class="iconfont icon-shijian"></p>
         <p>我的面试</p>
         <p>></p>
-        <!-- <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber"></button> -->
       </div>
     </div>
     <div class="z_Modal" v-if="show">
@@ -58,7 +57,7 @@ export default {
     },
     to() {
       wx.navigateTo({
-        url: "/pages/addInter/main"
+        url: "/pages/interviewList/main"
       });
     },
   }
