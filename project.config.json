@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -80,6 +80,19 @@
 					"name": "\"pages/interviewList/main\",",
 					"pathName": "pages/interviewList/main",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "213132132",
+					"pathName": "pages/index/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "111111111111111",
+					"pathName": "pages/interview/main",
 					"scene": null
 				}
 			]

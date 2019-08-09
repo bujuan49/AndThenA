@@ -2,7 +2,7 @@
   <div class="personalWrap">
     <div class="personalHead">
       <div class="iconfont icon-touxiang"></div>
-      <div>159******7149</div>
+      <div>{{phone?phone:'请授权'}}</div>
     </div>
     <div class="personalMain">
       <div>
@@ -14,25 +14,35 @@
         <p class="iconfont icon-shijian"></p>
         <p>我的面试</p>
         <p>></p>
-      </div>
-      <div>
-        <p class="iconfont icon-shijian"></p>
-        <p>我的面试</p>
-        <p>></p>
+        <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber"></button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {};
   },
-  //传入组件
-  components: {},
-
+  computed: {
+    ...mapState({
+      phone: state => state.phone.phone
+    })
+  },
   methods: {
+    ...mapActions({
+      decrypt: "phone/decrypt"
+    }),
+    getPhoneNumber(e) {
+      let { encryptedData, iv } = e.target;
+      console.log(e)
+      this.decrypt({
+        encryptedData,
+        iv
+      });
+    },
     to() {
       wx.navigateTo({
         url: "/pages/addInter/main"

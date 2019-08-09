@@ -4,7 +4,9 @@ import home from './modules/home'
 import address from './modules/address'
 import addInterview from './modules/addInterview'
 import interviewList from './modules/interviewList'
+import phone from './modules/phone'
 import CreateLogger from 'vuex/dist/logger'
+
 Vue.use(Vuex)
 export default new Vuex.Store({
   // 模块
@@ -12,7 +14,8 @@ export default new Vuex.Store({
     home,
     address,
     addInterview,
-    interviewList
+    interviewList,
+    phone
   },
   //  插件
   plugins: [CreateLogger()]

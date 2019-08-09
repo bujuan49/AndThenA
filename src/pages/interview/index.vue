@@ -31,7 +31,7 @@
           <textarea name="text" id="textarea" cols="10" rows="50" placeholder="备注信息(可选,100个字以内)" 
           v-model="current.description" ></textarea>
         </div>
-        <button class="footer" form-type="submit">确认</button>
+        <button class="footer" report-submit="true" form-type="submit">确认</button>
       </form>
       
     </div>
@@ -87,7 +87,6 @@ export default {
       dateRange[0]=dateRange[0].map(item=>{
         return moment().add(item,'days').date()+'号'
       })
-      console.log(dateRange)
       return dateRange;
       
     },
@@ -104,6 +103,7 @@ export default {
     ...mapActions({
       submitInterview:'addInterview/submit'
     }),
+    
    columnChange(e){
       let {column, value} = e.target;
       let date = [...this.info.date];
@@ -118,7 +118,7 @@ export default {
     },
     //提交添加面试
     async formSubmit (e) {
-      console.log(111)
+     
       this.current.company=e.mp.detail.value.name;
       this.current.phone=e.mp.detail.value.tel;
       this.current.address=this.intervalue;
@@ -129,10 +129,11 @@ export default {
       this.form_id=e.mp.detail.formId
       //添加时间戳
       this.current.start_time = moment(this.dateShow).unix()*1000;
-      let data = await this.submitInterview(this.current);
+      // let data = await this.submitInterview(this.current);
       console.log(data)
       console.log('form发生了submit事件，携带数据为：', e.mp.detail.value)
     },
+ 
     // submitMs(){ //提交——添加面试
     //   this.addSign({
 
