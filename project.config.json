@@ -57,6 +57,11 @@
 				{
 					"id": -1,
 					"name": "\"pages/personal/main\",",
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "我的",
 					"pathName": "pages/personal/main",
 					"query": "",
 					"scene": null
@@ -80,6 +85,8 @@
 					"name": "\"pages/interviewList/main\",",
 					"pathName": "pages/interviewList/main",
 					"query": "",
+					"name": "首页",
+					"pathName": "pages/index/main",
 					"scene": null
 				}
 			]

@@ -1,6 +1,6 @@
 <script>
 import { login } from "@/service/";
-
+//const cloud = require('wx-server-sdk')
 export default {
   created() {
     // 调用API从本地缓存中获取数据
@@ -19,7 +19,6 @@ export default {
           //发起网络请求
           let data = await login(res.code);
           wx.setStorageSync("openid", data.data.openid);
- 
         } else {
           console.log("登录失败！" + res.errMsg);
         }
