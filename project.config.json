@@ -1,18 +1,27 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
+	"libVersion": "2.7.7",
 	"appid": "wx3375420e2c184d34",
 	"projectname": "sign",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"miniprogramRoot": "dist/wx/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -27,37 +36,10 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
-			"list": [
-				{
-					"id": -1,
-					"name": "interviewList",
-					"pathName": "pages/interviewList/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "\"pages/index/main\",",
-					"pathName": "pages/index/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "\"pages/addInter/main\",",
-					"pathName": "pages/addInter/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "\"pages/personal/main\",",
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -68,38 +50,16 @@
 				},
 				{
 					"id": -1,
-					"name": "\"pages/design/main\",",
-					"pathName": "pages/design/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "\"pages/serve/main\",",
-					"pathName": "pages/serve/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "\"pages/interviewList/main\",",
-					"pathName": "pages/interviewList/main",
-					"query": "",
 					"name": "首页",
 					"pathName": "pages/index/main",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "213132132",
-					"pathName": "pages/index/main",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "111111111111111",
-					"pathName": "pages/interview/main",
+					"id": 2,
+					"name": "地址列表",
+					"pathName": "pages/addInter/main",
+					"query": "",
 					"scene": null
 				}
 			]

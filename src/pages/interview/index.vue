@@ -187,6 +187,9 @@ export default {
     if (moment().hour() == 23){
       this.info.date = [1,0,0];
     }
+    wx.setNavigationBarTitle({
+      title: '添加面试' 
+    })
   }
 }
 </script>

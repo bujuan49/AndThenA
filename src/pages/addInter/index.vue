@@ -4,19 +4,22 @@
       <div>北京</div>
       <input type="text" @input="(e)=>chengeFn(e)" v-model="value"/>
     </div>
-    <div class="addInterMain">
-      <div v-for="item in addresslist" :key="item.id" @click="toInter(item)">
-        <p class="iconfont icon-zhifeiji"></p>
-        <p>
-          <span>{{item.title}}</span>
-          <span>{{item.address}}</span>
-        </p>
+    <scroll-view class='scroll-view-list-vertical' scroll-y="true">
+      <div class="addInterMain">
+        <div v-for="item in addresslist" :key="item.id" @click="toInter(item)">
+          <p class="iconfont icon-zhifeiji"></p>
+          <p>
+            <span>{{item.title}}</span>
+            <span>{{item.address}}</span>
+          </p>
+        </div>
       </div>
-    </div>
+    </scroll-view>
   </div>
 </template>
 
 <script>
+import {debounce} from "../../utils/index"
 import {mapState,mapActions} from "vuex"
 export default {
   data() {
@@ -29,6 +32,9 @@ export default {
     ...mapState({
       addresslist:state => state.address.addresslist
     })
+  },
+  watch: {
+    
   },
   methods: {//定义函数
       ...mapActions({
@@ -48,7 +54,16 @@ export default {
     this.getSuggestion(this.value);
   }, 
   created() {
-    // let app = getApp()
+    var that=this;
+    this.search=debounce((val)=>{
+      this.$map.search({
+        keyword:val,
+        region:"北京",
+        success:function (res) {
+          this.suggestion = res.data;
+        }
+      })
+    },300)
   }
 };
 </script>
