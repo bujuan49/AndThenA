@@ -6,7 +6,7 @@
         <p :class="item.remind===-1?'okCall no':'okCall end'">{{item.remind===-1 ? '未开始': '已打卡'}}</p>
       </div>
       <div class="boxListTwo">
-        <p>{{item.address}}</p>
+        <p>{{item.address.address?item.address.address:item.address}}</p>
       </div>
       <div class="boxListThree">
         <p>

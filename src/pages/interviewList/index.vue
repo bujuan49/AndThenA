@@ -38,7 +38,6 @@ export default {
       listAll: state => state.interviewList.listAll
     })
   },
-
   methods: {
     ...mapActions({
       getState: "interviewList/getState"
@@ -47,6 +46,24 @@ export default {
       this.getState(item); //调用方法传参数
       this.ind = item.id; //点击切换
     }
+  },
+  _getRegisterInfo() {
+    let pageNum = this.pageNum;
+    let pageSize = this.pageSize;
+    wx.showLoading({
+      title: "玩命加载中"
+    });
+  },
+  // 上拉加载
+  onReachBottom() {
+    console.log("触底了");
+  },
+  // 停止下拉刷新
+  onPullDownRefresh() {
+    // to doing..
+    console.log("我在刷");
+    // 停止下拉刷新
+    wx.stopPullDownRefresh();
   },
 
   created() {
@@ -69,6 +86,7 @@ export default {
   display: flex;
   justify-content: space-around;
   li {
+   transition: all 1s;
     text-align: center;
     padding: 15rpx 0;
   }
@@ -83,4 +101,5 @@ export default {
   color: rgb(39, 133, 195);
   border-bottom: 1px solid rgb(39, 133, 195);
 }
+
 </style>

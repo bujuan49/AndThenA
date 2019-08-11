@@ -22,24 +22,36 @@ const actions = {
     if (payload.text === '全部') {
       let data = await sign()
       data.data.forEach(item => {
+        if (item.address[0] === '{') {
+          item.address = JSON.parse(item.address)
+        }
         item.start_time = new Date(item.start_time * 1).toLocaleDateString()
       })
       context.commit('setState', data.data)
     } else if (payload.text === '未开始') {
       let data = await sign(-1)
       data.data.forEach(item => {
+        if (item.address[0] === '{') {
+          item.address = JSON.parse(item.address)
+        }
         item.start_time = new Date(item.start_time * 1).toLocaleDateString()
       })
       context.commit('setState', data.data)
     } else if (payload.text === '已开始') {
       let data = await sign(0)
       data.data.forEach(item => {
+        if (item.address[0] === '{') {
+          item.address = JSON.parse(item.address)
+        }
         item.start_time = new Date(item.start_time * 1).toLocaleDateString()
       })
       context.commit('setState', data.data)
     } else {
       let data = await sign(1)
       data.data.forEach(item => {
+        if (item.address[0] === '{') {
+          item.address = JSON.parse(item.address)
+        }
         item.start_time = new Date(item.start_time * 1).toLocaleDateString()
       })
       context.commit('setState', data.data)

@@ -159,7 +159,6 @@ export default {
       this.submiting = true;
       let data = await this.submitInterview(this.current);
       if(data.code==0){
-        console.log(111)
         wx.showModal({
           title: '温馨提示', //提示的标题,
           content: data.msg, //提示的内容,
